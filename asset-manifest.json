@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Weather.github.io/static/css/main.7c1a6982.css",
-    "main.js": "/Weather.github.io/static/js/main.dea1f4fe.js",
+    "main.css": "/Weather.github.io/static/css/main.e8dd5cd6.css",
+    "main.js": "/Weather.github.io/static/js/main.dcbd6a59.js",
     "static/js/453.0ccb7fb4.chunk.js": "/Weather.github.io/static/js/453.0ccb7fb4.chunk.js",
     "index.html": "/Weather.github.io/index.html",
-    "main.7c1a6982.css.map": "/Weather.github.io/static/css/main.7c1a6982.css.map",
-    "main.dea1f4fe.js.map": "/Weather.github.io/static/js/main.dea1f4fe.js.map",
+    "main.e8dd5cd6.css.map": "/Weather.github.io/static/css/main.e8dd5cd6.css.map",
+    "main.dcbd6a59.js.map": "/Weather.github.io/static/js/main.dcbd6a59.js.map",
     "453.0ccb7fb4.chunk.js.map": "/Weather.github.io/static/js/453.0ccb7fb4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c1a6982.css",
-    "static/js/main.dea1f4fe.js"
+    "static/css/main.e8dd5cd6.css",
+    "static/js/main.dcbd6a59.js"
   ]
 }
