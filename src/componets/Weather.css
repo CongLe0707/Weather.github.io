@@ -1,0 +1,108 @@
+/* Reset and base styles */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #74ebd5, #f4f4f5);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main weather card */
+.weather-card {
+  background-color: rgba(50, 7, 243, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 320px;
+  color: #fff;
+}
+
+/* Search box */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  padding: 10px 15px;
+  border-radius: 25px 0 0 25px;
+  border: none;
+  outline: none;
+  width: 200px;
+  font-size: 16px;
+}
+
+.search-box button {
+  padding: 10px 15px;
+  border-radius: 0 25px 25px 0;
+  border: none;
+  background-color: #4fc3f7;
+  color: #3704ef;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.search-box button:hover {
+  background-color: #039be5;
+}
+
+/* Error and loading */
+.error,
+.loading {
+  color: #ffeb3b;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Weather info */
+.weather-info {
+  margin-top: 20px;
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.weather-info h1 {
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.weather-info h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Extra info (humidity and wind) */
+.extra-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.extra-info div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 5px;
+}
+
+.extra-info svg {
+  margin-bottom: 5px;
+}
+
+.extra-info span {
+  font-size: 12px;
+  color: #e0f7fa;
+}
