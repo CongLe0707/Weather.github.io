@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Weather.css";
-import { FaSearch, FaTint, FaWind } from "react-icons/fa"; // Icon độ ẩm & gió
+import { FaSearch, FaTint, FaWind } from "react-icons/fa";
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -9,11 +9,12 @@ const Weather = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchWeatherData = () => {
-    if (!city) return;
+  // Hàm fetch có thể nhận tên thành phố truyền vào
+  const fetchWeatherData = (selectedCity = city) => {
+    if (!selectedCity) return;
     setLoading(true);
 
-    const apiUrl = `http://api.weatherapi.com/v1/current.json?key=372c1c997b7349c398833035251205&q=${city}&aqi=no`;
+    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=372c1c997b7349c398833035251205&q=${selectedCity}&aqi=no`;
 
     axios
       .get(apiUrl)
@@ -23,14 +24,20 @@ const Weather = () => {
         setLoading(false);
       })
       .catch((err) => {
-        setError("City not found.");
+        setError("Không tìm thấy thành phố.");
         setLoading(false);
         console.error(err);
       });
   };
 
+  // Khi app load lần đầu, gọi API cho "Ho Chi Minh"
+  useEffect(() => {
+    setCity("Ho Chi Minh");
+    fetchWeatherData("Ho Chi Minh");
+  }, []);
+
   const handleSearch = () => {
-    fetchWeatherData();
+    fetchWeatherData(city);
   };
 
   const handleCityChange = (e) => {
@@ -44,7 +51,7 @@ const Weather = () => {
           type="text"
           value={city}
           onChange={handleCityChange}
-          placeholder="Tìm kiếm thành phố..."
+          placeholder="Tìm thành phố..."
         />
         <button onClick={handleSearch}><FaSearch /></button>
       </div>
@@ -60,7 +67,7 @@ const Weather = () => {
             className="weather-icon"
           />
           <h1>{weatherData.current.temp_c}°C</h1>
-          <h2>{weatherData.location.name}</h2>
+          <h2>{weatherData.location.name}, {weatherData.location.country}</h2>
           <div className="extra-info">
             <div><FaTint /> {weatherData.current.humidity}%<span>Độ ẩm</span></div>
             <div><FaWind /> {weatherData.current.wind_kph} km/h<span>Sức gió</span></div>
