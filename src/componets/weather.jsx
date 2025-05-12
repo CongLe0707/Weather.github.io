@@ -44,13 +44,13 @@ const Weather = () => {
           type="text"
           value={city}
           onChange={handleCityChange}
-          placeholder="Search"
+          placeholder="Tìm kiếm thành phố..."
         />
         <button onClick={handleSearch}><FaSearch /></button>
       </div>
 
       {error && <p className="error">{error}</p>}
-      {loading && <p className="loading">Loading...</p>}
+      {loading && <p className="loading">Đang tải...</p>}
 
       {weatherData && !loading && (
         <div className="weather-info">
@@ -62,8 +62,8 @@ const Weather = () => {
           <h1>{weatherData.current.temp_c}°C</h1>
           <h2>{weatherData.location.name}</h2>
           <div className="extra-info">
-            <div><FaTint /> {weatherData.current.humidity}%<span>Humidity</span></div>
-            <div><FaWind /> {weatherData.current.wind_kph} km/h<span>Wind Speed</span></div>
+            <div><FaTint /> {weatherData.current.humidity}%<span>Độ ẩm</span></div>
+            <div><FaWind /> {weatherData.current.wind_kph} km/h<span>Sức gió</span></div>
           </div>
         </div>
       )}
