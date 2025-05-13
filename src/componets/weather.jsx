@@ -3,7 +3,6 @@ import axios from "axios";
 import "./Weather.css";
 import { FaSearch, FaTint, FaWind } from "react-icons/fa";
 
-// Hàm dịch điều kiện thời tiết
 const translateWeatherCondition = (condition) => {
   const weatherConditions = {
     Sunny: "Nhiều nắng",
@@ -12,15 +11,16 @@ const translateWeatherCondition = (condition) => {
     "Heavy rain": "Mưa to",
     "Patchy rain nearby": "Mưa rải rác",
     "Partly Cloudy": "Có mây",
+    
     "Torrential rain shower": "Mưa rào",
     "Overcast": "Trời âm u",
-    Mist: "Sương mù",
+    "Light rain": "Mưa nhỏ",
+
     Fog: "Sương mù dày",
     Rain: "Mưa",
     Snow: "Tuyết",
     Thunderstorm: "Giông bão",
   };
-
   return weatherConditions[condition] || condition;
 };
 
@@ -34,9 +34,7 @@ const Weather = () => {
   const fetchWeatherData = (selectedCity = city) => {
     if (!selectedCity) return;
     setLoading(true);
-
     const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=372c1c997b7349c398833035251205&q=${selectedCity}&days=7&aqi=no&alerts=no`;
-
     axios
       .get(apiUrl)
       .then((response) => {
