@@ -21,10 +21,6 @@ const CurrentWeather: React.FC = () => {
   if (!weatherData) return null;
 
   const { current, location } = weatherData;
-
-  // Kiểm tra nếu current không tồn tại
-  if (!current) return null;
-
   return (
     <div className="weather-info">
       <img src={current.condition.icon} alt="weather-icon" />

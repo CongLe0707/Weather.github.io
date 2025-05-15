@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const API_KEY = "372c1c997b7349c398833035251205";
 
+// ---- Interface định nghĩa dữ liệu từ API ----
 interface Condition {
   text: string;
   icon: string;
@@ -38,8 +39,10 @@ interface WeatherResponse {
   };
 }
 
+// ---- State của Redux Slice ----
 interface WeatherState {
   city: string;
+  
   weatherData: WeatherResponse | null;
   forecastData: ForecastDay[];
   loading: boolean;
@@ -49,11 +52,13 @@ interface WeatherState {
 const initialState: WeatherState = {
   city: 'Ho Chi Minh',
   weatherData: null,
+  // Removed the 'data' property as it is not defined in the WeatherState interface
   forecastData: [],
   loading: false,
   error: null,
 };
 
+// ---- Async thunk fetch dữ liệu thời tiết ----
 export const fetchWeather = createAsyncThunk<WeatherResponse, string>(
   'weather/fetchWeather',
   async (city) => {
@@ -64,6 +69,7 @@ export const fetchWeather = createAsyncThunk<WeatherResponse, string>(
   }
 );
 
+// ---- Slice chính ----
 const weatherSlice = createSlice({
   name: 'weather',
   initialState,
@@ -82,9 +88,12 @@ const weatherSlice = createSlice({
         state.loading = false;
         state.weatherData = action.payload;
         state.forecastData = action.payload.forecast.forecastday;
+        state.error = null;
       })
       .addCase(fetchWeather.rejected, (state) => {
         state.loading = false;
+        state.weatherData = null;
+        state.forecastData = [];
         state.error = "Không tìm thấy thành phố.";
       });
   },

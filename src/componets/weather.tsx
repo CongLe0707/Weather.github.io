@@ -10,19 +10,30 @@ import './Weather.css';
 
 const Weather: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { loading, error, city } = useSelector((state: RootState) => state.weather);
+  const { loading, error, city, weatherData } = useSelector((state: RootState) => state.weather);
+
 
   useEffect(() => {
-    dispatch(fetchWeather(city));
+    if (city.trim() !== "") {
+      dispatch(fetchWeather(city));
+    }
   }, [dispatch, city]);
 
   return (
     <div className="weather-card">
       <SearchBox />
+
       {error && <p className="error">{error}</p>}
       {loading && <p className="loading">Đang tải...</p>}
-      {!loading && <CurrentWeather />}
-      {!loading && <Forecast />}
+
+    
+     {!loading && !error && weatherData && (
+        <>
+          <CurrentWeather />
+          <Forecast />
+        </>
+      )}
+
     </div>
   );
 };

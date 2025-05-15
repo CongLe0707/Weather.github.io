@@ -11,6 +11,8 @@ const translate = (text: string): string => {
     "Partly Cloudy": "Có mây",
     "Torrential rain shower": "Mưa rào",
 
+    
+
   };
   return map[text] || text;
 };
